@@ -1,0 +1,30 @@
+function initArray(m)
+	local array = {}
+	for i = 1, m do
+		array[i]=0
+	end
+	return array
+	friendrop.drop=initArray(32)
+end
+
+addhook("drop","friendrop.drop")
+function friend.drop(id)
+	if player(id,drop) then
+	for (drop(x,y)==3,3)
+	drop y = 3
+	drop x= 3
+	parse("drop"..gun)
+		
+end
+
+addhook("use","use.friendrop.use")
+function use.friend.drop(key)
+	for (player(id,key)=="E") then
+	friendrop.serveraction
+
+end
+
+addhook("serveraction","friendrop.serveraction")
+function friendrop.serveraction(id)
+	friendrop.drop(id)
+end
