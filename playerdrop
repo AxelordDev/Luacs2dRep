@@ -7,6 +7,18 @@ function initArray(m)
 	friendrop.drop=initArray(32)
 end
 
+local rad = math.rad
+local cos = math.cos
+local sin = math.sin
+
+function GetXYInFrontOfPlayer(PlayerID, Offset)
+	local PX, PY, PRot = player(PlayerID, "x"), player(PlayerID, "y"), player(PlayerID, "rot")
+	PRot = rad((PRot - 90))
+	PX = (PX + (Offset * cos(PRot)))
+	PY = (PY + (Offset * sin(PRot)))
+	return PX, PY
+end
+
 addhook("drop","friendrop.drop")
 function friend.drop(id)
 	if player(id,drop) then
