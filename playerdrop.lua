@@ -1,43 +1,24 @@
-function initArray(m)
-	local array = {}
-	local friendrop = {}
-	for i = 1, m do
-		array[i]=0
-	end
-	return array
-	friendrop.drop=initArray(32)
+cant_drop = {50,74}
+normal_drop = {47,48,49,51,52,53,54,72,73,75,76,89}
+
+addhook("drop","drop")
+function drop(id,idd,type)
+     for _, value in pairs(cant_drop) do
+          if value == player(id,"weapon") then
+return 1
+end
 end
 
-local rad = math.rad
-local cos = math.cos
-local sin = math.sin
-
-function GetXYInFrontOfPlayer(PlayerID, Offset)
-	local PX, PY, PRot = player(PlayerID, "x"), player(PlayerID, "y"), player(PlayerID, "rot")
-	PRot = rad((PRot - 90))
-	PX = (PX + (Offset * cos(PRot)))
-	PY = (PY + (Offset * sin(PRot)))
-	return PX, PY
+     for _, v in pairs(normal_drop) do
+          if v == player(id,"weapon") then
+return 0
+end
 end
 
-addhook("drop","friendrop.drop")
-function friend.drop(id)
-	if player(id,drop) then
-	for (drop(x,y)==3,3)
-	drop y = 3
-	drop x= 3
-	parse("drop"..gun)
-		
-end
-
-addhook("use","use.friendrop.use")
-function use.friend.drop(key)
-	for (player(id,key)=="E") then
-	friendrop.serveraction
-
-end
-
-addhook("serveraction","friendrop.serveraction")
-function friendrop.serveraction(id)
-	friendrop.drop(id)
+local x=player(id,"x") 
+local y=player(id,"y") 
+local rot=player(id,"rot") 
+parse("strip "..id.." "..type.."")
+parse("spawnprojectile 0 "..type.." "..x.." "..y.." 100 "..rot.."")
+return 1
 end
