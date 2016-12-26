@@ -4,6 +4,8 @@ addhook("hit","myhithook")
 addhook("kill","mykillhook")
 addhook("endround", "imagend")
 addhook("endround","myendroundhook")
+addhook("bombexplode","exploto")
+addhook("bombdefuse","lapago")
 
 function initArray(m)
   local array = {}
@@ -73,4 +75,16 @@ function imagend(mode)
      elseif mode==4 then --Game commencing
      elseif mode==10 then --VIP
      end
+end
+
+function exploto(id)
+  parse("sv_msg MVP: "..player(id,"name").." For planting the bomb!@C ")
+  HUDImage = image('gfx/trct/ttwin.png', 320, 170, 2)
+  imagealpha(HUDImage, 1)
+end
+
+function lapago(id)
+  parse("sv_msg MVP: "..player(id,"name").." For defusing bomb!@C ")
+  HUDImage = image('gfx/trct/ctwin.png', 320, 170, 2)
+  imagealpha(HUDImage, 1)
 end
